@@ -53,20 +53,24 @@ class _SignupScreenConsumerState extends ConsumerState<SignupScreenConsumer> {
 
       // Listen to auth state changes
       ref.listen(authStateNotifierProvider, (prev, next) {
-        next.whenData((isAuthenticated) {
-          if (isAuthenticated && mounted) {
-            context.go('/home');
-          }
-        }).whenError((error, stack) {
-          if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(error.toString()),
-                backgroundColor: AppTheme.errorColor,
-              ),
-            );
-          }
-        });
+        next.when(
+          data: (isAuthenticated) {
+            if (isAuthenticated && mounted) {
+              context.go('/home');
+            }
+          },
+          loading: () {},
+          error: (error, stack) {
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(error.toString()),
+                  backgroundColor: AppTheme.errorColor,
+                ),
+              );
+            }
+          },
+        );
       });
     }
   }

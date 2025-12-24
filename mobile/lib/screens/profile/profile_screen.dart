@@ -51,7 +51,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               onPressed: () {
                 if (currentUser != null) {
                   _nameController.text = currentUser.displayName ?? '';
-                  _emailController.text = currentUser.email;
+                  _emailController.text = currentUser.email ?? '';
                   _phoneController.text = '';
                   setState(() {
                     _isEditing = true;
@@ -157,7 +157,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
                         // Email
                         Text(
-                          currentUser.email,
+                          currentUser.email ?? 'No email',
                           style: TextStyle(
                             color: colorScheme.onPrimaryContainer,
                             fontSize: 14,
@@ -282,7 +282,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                     context,
                                     Icons.email_outlined,
                                     'Email',
-                                    currentUser.email,
+                                    currentUser.email ?? 'No email',
                                   ),
                                   const Divider(),
                                   _buildInfoRow(

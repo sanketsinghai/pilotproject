@@ -34,18 +34,22 @@ dependencies:
   # HTTP & API
   dio: ^5.3.1
 
+  # JSON Serialization
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+
   # Location & Maps
-  geolocator: ^9.0.2
-  flutter_map: ^6.0.0
+  geolocator: ^14.0.0
+  flutter_map: ^8.1.0
   latlong2: ^0.9.1
-  flutter_map_location_marker: ^7.1.0
+  flutter_map_location_marker: ^10.2.0
 
   # TTS (Text to Speech)
-  flutter_tts: ^8.1.0
+  flutter_tts: ^4.2.3
 
   # PDF Viewer for Granths
   pdfx: ^2.6.0
-  syncfusion_flutter_pdfviewer: ^22.2.12
+  syncfusion_flutter_pdfviewer: ^32.1.20
 
   # UI/UX
   get: ^4.6.5
@@ -53,16 +57,19 @@ dependencies:
   flutter_screenutil: ^5.8.4
 
   # Date & Time
-  intl: ^0.19.0
+  intl: ^0.18.0
 
   # Logging
   logger: ^2.1.0
 
   # Search
-  fuse: ^3.0.1  # Fuzzy search for offline search
+  fuse: 0.0.99
 
   # QR Code (for temple/dharamshala info sharing)
   qr_flutter: ^4.1.0
+
+  # URL Launcher
+  url_launcher: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +78,8 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   riverpod_generator: ^2.4.0
   build_runner: ^2.4.6
+  freezed: ^2.4.1
+  json_serializable: ^6.7.1
 
 flutter:
   uses-material-design: true
@@ -78,7 +87,7 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
-    - assets/data/  # For offline Granths
+    - assets/data/
 
   fonts:
     - family: Roboto

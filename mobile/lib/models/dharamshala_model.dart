@@ -23,8 +23,8 @@ class Dharamshala with _$Dharamshala {
     @Default('') String contactPerson,
     @Default(0.0) double rating,
     @Default(0) int reviewCount,
-    @Default(DateTime.utc(0)) DateTime createdAt,
-    @Default(DateTime.utc(0)) DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _Dharamshala;
 
   factory Dharamshala.fromJson(Map<String, dynamic> json) =>

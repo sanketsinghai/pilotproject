@@ -17,8 +17,8 @@ class PathshalaLesson with _$PathshalaLesson {
     @Default([]) List<String> imageUrls,
     @Default(0.0) double rating,
     @Default(0) int completionCount,
-    @Default(DateTime.utc(0)) DateTime createdAt,
-    @Default(DateTime.utc(0)) DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _PathshalaLesson;
 
   factory PathshalaLesson.fromJson(Map<String, dynamic> json) =>

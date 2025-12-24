@@ -30,7 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
       showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => const AuthDialog(),
+        builder: (context) => const Dialog(
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: CircularProgressIndicator(),
+          ),
+        ),
       );
       
       // You'll implement with Riverpod consumer in the actual implementation

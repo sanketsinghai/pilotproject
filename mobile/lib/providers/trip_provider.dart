@@ -44,7 +44,7 @@ final tripCreationProvider =
 class TripCreationNotifier extends StateNotifier<AsyncValue<Trip>> {
   final ApiService _apiService;
 
-  TripCreationNotifier(this._apiService) : super(const AsyncValue.data(_EmptyTrip() as Trip));
+  TripCreationNotifier(this._apiService) : super(AsyncValue.data(_createEmptyTrip()));
 
   Future<void> createTrip(Map<String, dynamic> tripData) async {
     state = const AsyncValue.loading();
@@ -57,15 +57,14 @@ class TripCreationNotifier extends StateNotifier<AsyncValue<Trip>> {
   }
 }
 
-// Dummy class for initial state
-class _EmptyTrip extends Trip {
-  const _EmptyTrip()
-      : super(
-          id: '',
-          userId: '',
-          title: '',
-          description: '',
-          startDate: DateTime.utc(0),
-          endDate: DateTime.utc(0),
-        );
+// Helper function to create empty trip
+Trip _createEmptyTrip() {
+  return Trip(
+    id: '',
+    userId: '',
+    title: '',
+    description: '',
+    startDate: DateTime.now(),
+    endDate: DateTime.now(),
+  );
 }

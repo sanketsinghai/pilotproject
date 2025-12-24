@@ -50,7 +50,7 @@ class QuizSubmissionNotifier extends StateNotifier<AsyncValue<QuizSubmission>> {
   final ApiService _apiService;
 
   QuizSubmissionNotifier(this._apiService)
-      : super(const AsyncValue.data(_EmptySubmission() as QuizSubmission));
+      : super(AsyncValue.data(_createEmptySubmission()));
 
   Future<void> submitQuiz(String lessonId, List<int> answers) async {
     state = const AsyncValue.loading();
@@ -63,14 +63,13 @@ class QuizSubmissionNotifier extends StateNotifier<AsyncValue<QuizSubmission>> {
   }
 }
 
-// Dummy class for initial state
-class _EmptySubmission extends QuizSubmission {
-  const _EmptySubmission()
-      : super(
-          lessonId: '',
-          answers: [],
-          score: 0,
-          percentage: 0,
-          passed: false,
-        );
+// Helper function to create empty submission
+QuizSubmission _createEmptySubmission() {
+  return const QuizSubmission(
+    lessonId: '',
+    answers: [],
+    score: 0,
+    percentage: 0.0,
+    passed: false,
+  );
 }

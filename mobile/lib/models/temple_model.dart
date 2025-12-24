@@ -23,8 +23,8 @@ class Temple with _$Temple {
     @Default(0.0) double rating,
     @Default(0) int reviewCount,
     @Default('') String sect, // Shvetambara, Digambara, etc.
-    @Default(DateTime.utc(0)) DateTime createdAt,
-    @Default(DateTime.utc(0)) DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _Temple;
 
   factory Temple.fromJson(Map<String, dynamic> json) =>

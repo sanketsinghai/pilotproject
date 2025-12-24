@@ -260,8 +260,7 @@ class _LessonDetailScreenState extends ConsumerState<LessonDetailScreen> {
                                     errorBuilder: (context, error, stack) {
                                       return Container(
                                         width: 200,
-                                        color: colorScheme
-                                            .surfaceContainerHighest,
+                                        color: colorScheme.surfaceContainerHighest,
                                         child: Center(
                                           child: Icon(
                                             Icons.image_outlined,
@@ -271,7 +270,7 @@ class _LessonDetailScreenState extends ConsumerState<LessonDetailScreen> {
                                       );
                                     },
                                   ),
-                                );
+                                ),
                               );
                             },
                           ),

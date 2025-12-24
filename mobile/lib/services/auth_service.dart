@@ -1,20 +1,20 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/user_model.dart';
+import '../models/user_model.dart' as app_user;
 
 class AuthService {
-  final FirebaseAuth _firebaseAuth;
+  final firebase_auth.FirebaseAuth _firebaseAuth;
 
   AuthService(this._firebaseAuth);
 
   // Get current user stream
-  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+  Stream<firebase_auth.User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
   // Get current user
-  User? get currentUser => _firebaseAuth.currentUser;
+  firebase_auth.User? get currentUser => _firebaseAuth.currentUser;
 
   // Sign up with email and password
-  Future<UserCredential> signUp({
+  Future<firebase_auth.UserCredential> signUp({
     required String email,
     required String password,
     required String displayName,
@@ -30,13 +30,13 @@ class AuthService {
       await credential.user?.reload();
 
       return credential;
-    } on FirebaseAuthException catch (e) {
+    } on firebase_auth.FirebaseAuthException catch (e) {
       throw _handleAuthException(e);
     }
   }
 
   // Sign in with email and password
-  Future<UserCredential> signIn({
+  Future<firebase_auth.UserCredential> signIn({
     required String email,
     required String password,
   }) async {
@@ -45,7 +45,7 @@ class AuthService {
         email: email,
         password: password,
       );
-    } on FirebaseAuthException catch (e) {
+    } on firebase_auth.FirebaseAuthException catch (e) {
       throw _handleAuthException(e);
     }
   }
@@ -63,13 +63,13 @@ class AuthService {
   Future<void> resetPassword(String email) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
-    } on FirebaseAuthException catch (e) {
+    } on firebase_auth.FirebaseAuthException catch (e) {
       throw _handleAuthException(e);
     }
   }
 
   // Convert Firebase User to app User model
-  User? getCurrentFirebaseUser() {
+  firebase_auth.User? getCurrentFirebaseUser() {
     return _firebaseAuth.currentUser;
   }
 
@@ -83,7 +83,7 @@ class AuthService {
   }
 
   // Handle Firebase Auth exceptions
-  String _handleAuthException(FirebaseAuthException e) {
+  String _handleAuthException(firebase_auth.FirebaseAuthException e) {
     switch (e.code) {
       case 'user-not-found':
         return 'No user found with this email.';
@@ -107,17 +107,17 @@ class AuthService {
 
 // Provider for AuthService
 final authServiceProvider = Provider<AuthService>((ref) {
-  return AuthService(FirebaseAuth.instance);
+  return AuthService(firebase_auth.FirebaseAuth.instance);
 });
 
 // Stream of Firebase auth state
-final authStateProvider = StreamProvider<User?>((ref) {
+final authStateProvider = StreamProvider<firebase_auth.User?>((ref) {
   final authService = ref.watch(authServiceProvider);
   return authService.authStateChanges;
 });
 
 // Current user (null if not authenticated)
-final currentUserProvider = Provider<User?>((ref) {
+final currentUserProvider = Provider<firebase_auth.User?>((ref) {
   final authState = ref.watch(authStateProvider);
   return authState.maybeWhen(
     data: (user) => user,

@@ -16,8 +16,8 @@ class User with _$User {
     @Default([]) List<String> favoriteGranths,
     @Default(false) bool emailVerified,
     @Default(true) bool isActive,
-    @Default(DateTime.utc(0)) DateTime createdAt,
-    @Default(DateTime.utc(0)) DateTime lastLoginAt,
+    DateTime? createdAt,
+    DateTime? lastLoginAt,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) =>

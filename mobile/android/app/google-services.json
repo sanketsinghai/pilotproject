@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "883719360554",
+    "project_id": "digamberjain-cd611",
+    "storage_bucket": "digamberjain-cd611.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883719360554:android:e154a59e574eb1418c3353",
+        "android_client_info": {
+          "package_name": "digamber.jain"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQGRoY3YCwMj45ZW2tzpM9bjoAtUQjJWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

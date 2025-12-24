@@ -20,8 +20,8 @@ class Granth with _$Granth {
     @Default(0.0) double rating,
     @Default(0) int downloadCount,
     @Default(0) int readCount,
-    @Default(DateTime.utc(0)) DateTime createdAt,
-    @Default(DateTime.utc(0)) DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _Granth;
 
   factory Granth.fromJson(Map<String, dynamic> json) =>

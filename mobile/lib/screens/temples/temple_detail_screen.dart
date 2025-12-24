@@ -56,13 +56,13 @@ class TempleDetailScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Hero Image
-              if (temple.imageUrl != null)
+              if (temple.imageUrls.isNotEmpty)
                 Container(
                   height: 300,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(temple.imageUrl!),
+                      image: NetworkImage(temple.imageUrls.first),
                       fit: BoxFit.cover,
                     ),
                   ),

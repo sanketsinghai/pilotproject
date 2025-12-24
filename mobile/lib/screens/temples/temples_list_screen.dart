@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/theme.dart';
 import '../../providers/temple_provider.dart';
-import '../../models/temple.dart';
+import '../../models/temple_model.dart';
 
 class TemplesListScreen extends ConsumerStatefulWidget {
   const TemplesListScreen({Key? key}) : super(key: key);
@@ -148,7 +148,7 @@ class _TemplesListScreenState extends ConsumerState<TemplesListScreen> {
                 ),
               ),
               data: (temples) {
-                if (temples.isEmpty) {
+                if (temples.items.isEmpty) {
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -177,9 +177,9 @@ class _TemplesListScreenState extends ConsumerState<TemplesListScreen> {
 
                 return ListView.builder(
                   padding: const EdgeInsets.all(AppTheme.paddingMedium),
-                  itemCount: temples.length,
+                  itemCount: temples.items.length,
                   itemBuilder: (context, index) {
-                    final temple = temples[index];
+                    final temple = temples.items[index];
                     return TempleCard(temple: temple);
                   },
                 );
@@ -214,7 +214,7 @@ class TempleCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Temple Image
-            if (temple.imageUrl != null)
+            if (temple.imageUrls.isNotEmpty)
               Container(
                 height: 200,
                 width: double.infinity,
@@ -224,7 +224,7 @@ class TempleCard extends StatelessWidget {
                     top: Radius.circular(AppTheme.borderRadiusMedium),
                   ),
                   image: DecorationImage(
-                    image: NetworkImage(temple.imageUrl!),
+                    image: NetworkImage(temple.imageUrls.first),
                     fit: BoxFit.cover,
                   ),
                 ),

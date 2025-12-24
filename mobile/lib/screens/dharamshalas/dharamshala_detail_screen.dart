@@ -283,7 +283,7 @@ class DharamshalaDetailScreen extends ConsumerWidget {
                           children: dharamshala.amenities
                               .map(
                                 (amenity) => Chip(
-                                  icon: Icon(_getAmenityIcon(amenity)),
+                                  avatar: Icon(_getAmenityIcon(amenity)),
                                   label: Text(amenity),
                                   backgroundColor:
                                       colorScheme.primaryContainer,

@@ -21,8 +21,8 @@ class Trip with _$Trip {
     @Default(false) bool isPublic,
     @Default('') String shareLink,
     @Default(0) int followers,
-    @Default(DateTime.utc(0)) DateTime createdAt,
-    @Default(DateTime.utc(0)) DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _Trip;
 
   factory Trip.fromJson(Map<String, dynamic> json) =>
