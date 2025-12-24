@@ -1,0 +1,88 @@
+name: digamber_jain_app
+description: "A Jain religious, educational and pilgrimage guide app with temples, Granths, trip planning and kids learning."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  riverpod: ^2.4.0
+  flutter_riverpod: ^2.4.0
+  hooks_riverpod: ^2.4.0
+
+  # Firebase
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.14.0
+  cloud_firestore: ^4.13.0
+  firebase_storage: ^11.5.0
+  firebase_messaging: ^14.7.0
+
+  # Local Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.2.2
+
+  # Navigation
+  go_router: ^11.0.0
+
+  # HTTP & API
+  dio: ^5.3.1
+
+  # Location & Maps
+  geolocator: ^9.0.2
+  flutter_map: ^6.0.0
+  latlong2: ^0.9.1
+  flutter_map_location_marker: ^7.1.0
+
+  # TTS (Text to Speech)
+  flutter_tts: ^8.1.0
+
+  # PDF Viewer for Granths
+  pdfx: ^2.6.0
+  syncfusion_flutter_pdfviewer: ^22.2.12
+
+  # UI/UX
+  get: ^4.6.5
+  provider: ^6.0.0
+  flutter_screenutil: ^5.8.4
+
+  # Date & Time
+  intl: ^0.19.0
+
+  # Logging
+  logger: ^2.1.0
+
+  # Search
+  fuse: ^3.0.1  # Fuzzy search for offline search
+
+  # QR Code (for temple/dharamshala info sharing)
+  qr_flutter: ^4.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+  riverpod_generator: ^2.4.0
+  build_runner: ^2.4.6
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+    - assets/data/  # For offline Granths
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
