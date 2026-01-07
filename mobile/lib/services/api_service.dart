@@ -1,33 +1,6 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../config/constants.dart';
-import '../models/api_response_model.dart';
-import '../models/temple_model.dart';
-import '../models/granth_model.dart';
-import '../models/dharamshala_model.dart';
-import '../models/trip_model.dart';
-import '../models/pathshala_model.dart';
-
+// Mock API Service for development
 class ApiService {
-  final Dio _dio;
-
-  ApiService(this._dio) {
-    _dio.options = BaseOptions(
-      baseUrl: AppConstants.apiBaseUrl,
-      connectTimeout: AppConstants.apiTimeout,
-      receiveTimeout: AppConstants.apiTimeout,
-      contentType: 'application/json',
-    );
-
-    // Add request/response logging
-    _dio.interceptors.add(
-      LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-        error: true,
-      ),
-    );
-  }
+  static const String baseUrl = 'http://localhost:8000/api';
 
   // ===== TEMPLES =====
   Future<ListResponse<Temple>> getTemples({
